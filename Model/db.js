@@ -16,7 +16,6 @@ class Db {
 
         })
     }
-
     createUser(userData) {
         var sql = "INSERT INTO users (ID, Name, Address, Phone) VALUES (?)";
         var values = [userData.id, userData.name, userData.address, userData.phone]
