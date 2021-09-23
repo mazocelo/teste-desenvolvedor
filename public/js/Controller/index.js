@@ -1,1 +1,0 @@
-const form = new FormController(document.querySelector('#form'))
