@@ -43,7 +43,7 @@ app.put('/:id', (req, res) => {
 app.delete('/:id', (req, res) => {
     const id = req.params.id
     db.deleteUser(id, (user) => {
-        res.end('user deletado')
+        res.end('user deletado:' + user)
     })
 })
 app.listen(port, () => {
