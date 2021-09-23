@@ -12,6 +12,5 @@ function newIdGenerator() {
     }
     newId = newId.join('')
     return newId
-        //console.log(newId)
 }
 module.exports = { newIdGenerator }

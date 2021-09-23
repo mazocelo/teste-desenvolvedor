@@ -38,11 +38,16 @@ app.get('/:id', (req, res) => {
 
 app.put('/:id', (req, res) => {
     const id = req.params.id
-    db.updateUser(id, )
+    db.updateUser(id, (user) => {
+        res.end('user alterado:' + user)
+    })
 })
 
 app.delete('/:id', (req, res) => {
-
+    const id = req.params.id
+    db.deleteUser(id, (user) => {
+        res.end('user deletado')
+    })
 })
 
 app.listen(port, () => {
