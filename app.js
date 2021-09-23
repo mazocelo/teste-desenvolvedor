@@ -18,14 +18,14 @@ app.set('view engine', 'ejs');
 app.get('/', (req, res) => {
     res.render('index')
 })
-
 app.post('/', (req, res) => {
     var form = req.body
     var id = newIdGenerator()
-    var user = { id, name: form['name'], address: form['adress'], phone: form['phone'] }
-    console.log(user)
-    db.createUser(user)
-    res.end('registred:' + JSON.stringify(user))
+    var newUser = { id, name: form['name'], address: form['adress'], phone: form['phone'] }
+    console.log(newUser)
+    db.createUser(newUser, (user) => {
+        res.end('registred:' + JSON.stringify(user))
+    })
 })
 app.get('/:id', (req, res) => {
     const id = req.params.id
@@ -33,23 +33,19 @@ app.get('/:id', (req, res) => {
         console.log(user, 'aqui')
         res.end(user)
     })
-
 })
-
 app.put('/:id', (req, res) => {
     const id = req.params.id
     db.updateUser(id, (user) => {
         res.end('user alterado:' + user)
     })
 })
-
 app.delete('/:id', (req, res) => {
     const id = req.params.id
     db.deleteUser(id, (user) => {
         res.end('user deletado')
     })
 })
-
 app.listen(port, () => {
     console.log(`app listening at http://localhost:${port}`)
 })
