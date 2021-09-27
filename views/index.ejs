@@ -14,20 +14,24 @@
 </head>
 
 <body class="container ">
-    <form id="form" class="form " method="POST" action="/">
+    <form id="form" class="form ">
         <div class="form-group ">
             <label class="row " for="name">Nome</label>
-            <input class="form-control-lg " name="name" type="text ">
-            <label class="row " for="adress">Endereço</label>
-            <input class="form-control-lg " name="adress" type="text ">
+            <input class="form-control-lg " name="Name" type="text ">
+            <label class="row " for="address">Endereço</label>
+            <input class="form-control-lg " name="Address" type="text ">
             <label class="row " for="phone">Telefone</label>
-            <input class="form-control-lg " name="phone" type="text ">
+            <input class="form-control-lg " name="Phone" type="text ">
         </div>
 
-        <input id="form-btn" class="btn-primary btn-lg " type="submit" value="Submit">
-
+        <button id="create-one" class="crud-btn btn-primary btn-lg">Create</button>
+        <button id="read-one" class="crud-btn btn-primary btn-lg">Read One</button>
+        <button id="update-one" class="crud-btn btn-primary btn-lg">Change by name</button>
+        <button id="delete-one" class="crud-btn btn-primary btn-lg"> Delete by name</button>
     </form>
 
 </body>
+<script src="js/formCrud.js"></script>
+<script src="js/index.js"></script>
 
 </html>

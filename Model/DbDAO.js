@@ -17,7 +17,7 @@ class Db {
     }
     createUser(userData, callback) {
         var sql = "INSERT INTO users (ID, Name, Address, Phone) VALUES (?)";
-        var values = [userData.id, userData.name, userData.address, userData.phone]
+        var values = [userData.id, userData.Name, userData.Address, userData.Phone]
         this.connection.query(sql, [values], function(err, result) {
             if (err) throw err;
             var user = JSON.stringify(result);
@@ -25,17 +25,19 @@ class Db {
             console.log("Number of records inserted: " + result.affectedRows)
         })
     }
-    findUser(id, callback) {
-        var sql = "SELECT * FROM users WHERE ID = ";
-        this.connection.query(sql + `'${id}'`, function(err, result) {
+    findUserByName(name, callback) {
+        var sql = "SELECT * FROM users WHERE Name = " + name;
+        this.connection.query(sql, function(err, result) {
             if (err) throw err;
             var user = JSON.stringify(result);
             console.log("user: " + user);
             return callback(user);
         })
     }
-    updateUser(id, newObj, calback) {
-        var sql = "UPDATE users SET " + newObj + "WHERE" + id;
+    updateUseByName(name, newObj, calback) {
+
+        var sql = "UPDATE users SET " + "Name =" + JSON.stringify(newObj.Name) + ", Address =" + JSON.stringify(newObj.Address) + ", Phone =" + JSON.stringify(newObj.Phone) + "WHERE Name = " + name;
+        console.log(newObj, 'novoobj', name)
         this.connection.query(sql, function(err, result) {
             if (err) throw err;
             var user = JSON.stringify(result);
@@ -43,8 +45,8 @@ class Db {
             calback(user);
         })
     }
-    deleteUser(id, callback) {
-        var sql = "DELETE FROM users ID = " + id;
+    deleteUseByName(name, callback) {
+        var sql = "DELETE FROM users WHERE Name =" + name;
         this.connection.query(sql, function(err, result) {
             if (err) throw err;
             console.log(result);

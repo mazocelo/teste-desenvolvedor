@@ -1,0 +1,1 @@
+const testeDesenvolvedor = new FormCrud(document.querySelector("#form"))
