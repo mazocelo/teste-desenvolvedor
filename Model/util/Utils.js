@@ -17,10 +17,8 @@ class Utils {
         return newId
     }
     treatBodyToUpdate(data) {
-        console.log(data)
 
         var newData = data
-            // console.log(newData[1], 'esse')
         newData = JSON.stringify(newData)
 
         newData = newData.replace(/:/g, '=').replace(/{/g, '').replace(/}/g, '')

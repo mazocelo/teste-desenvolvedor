@@ -13,23 +13,19 @@ app.use(bodyParser.urlencoded({ extended: true }));
 app.use(bodyParser.json());
 app.use(express.static(path.join(__dirname, 'public')));
 app.set('view engine', 'ejs');
-
 //routering
 app.get('/', (req, res) => {
     res.render('index')
 })
 app.post('/', (req, res) => {
     var newUser = req.body
-    console.log(newUser)
-
     newUser.id = Utility.newIdGenerator()
     console.log(newUser, 'aqui')
-    db.createUser(newUser, (user) => {
-        res.send('registred:' + JSON.stringify(user))
+    db.createUser(newUser, (msg) => {
+        res.send('Usuario criado!')
     })
 })
 app.get('/:name', (req, res) => {
-
     const name = req.params.name
     if (name != 'favicon.ico') {
         db.findUserByName(name, (user) => {
@@ -46,9 +42,8 @@ app.put('/:name', (req, res) => {
 })
 app.delete('/:name', (req, res) => {
     const name = req.params.name
-    console.log(name)
-    db.deleteUseByName(name, (user) => {
-        res.send('user deletado:' + user)
+    db.deleteUseByName(name, (msg) => {
+        res.send("users deletados:" + msg)
     })
 })
 app.listen(port, () => {

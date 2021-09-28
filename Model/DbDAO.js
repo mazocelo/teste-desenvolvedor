@@ -21,8 +21,9 @@ class Db {
         this.connection.query(sql, [values], function(err, result) {
             if (err) throw err;
             var user = JSON.stringify(result);
-            callback(user);
-            console.log("Number of records inserted: " + result.affectedRows)
+            console.log("Number of records inserted: " + JSON.stringify(result))
+            return callback(user);
+
         })
     }
     findUserByName(name, callback) {
@@ -35,22 +36,22 @@ class Db {
         })
     }
     updateUseByName(name, newObj, calback) {
-
         var sql = "UPDATE users SET " + "Name =" + JSON.stringify(newObj.Name) + ", Address =" + JSON.stringify(newObj.Address) + ", Phone =" + JSON.stringify(newObj.Phone) + "WHERE Name = " + name;
         console.log(newObj, 'novoobj', name)
         this.connection.query(sql, function(err, result) {
             if (err) throw err;
-            var user = JSON.stringify(result);
-            console.log('update:' + user);
-            calback(user);
+            var msg = ('update:' + name);
+            return calback(msg);
         })
     }
     deleteUseByName(name, callback) {
         var sql = "DELETE FROM users WHERE Name =" + name;
         this.connection.query(sql, function(err, result) {
             if (err) throw err;
-            console.log(result);
-            callback(result);
+            var msg = eval(result)
+            msg = result.affectedRows
+            console.log(msg);
+            return callback(JSON.stringify(msg));
         })
     }
 }
