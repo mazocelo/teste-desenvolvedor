@@ -1,3 +1,11 @@
 .crud-btn {
     margin-top: 12px;
 }
+
+.user-tabela {
+    border: 17px double rgb(62, 63, 78);
+    border-radius: 29%;
+    height: 270px;
+    padding: 40px;
+    margin: 10px;
+}

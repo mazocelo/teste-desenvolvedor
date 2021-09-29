@@ -36,8 +36,8 @@ app.get('/:name', (req, res) => {
 app.put('/:name', (req, res) => {
     const name = req.params.name
     var newData = req.body
-    db.updateUseByName(name, newData, (user) => {
-        res.send('user alterado:' + user)
+    db.updateUseByName(name, newData, (msg) => {
+        res.send(msg)
     })
 })
 app.delete('/:name', (req, res) => {

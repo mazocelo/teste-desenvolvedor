@@ -40,7 +40,7 @@ class Db {
         console.log(newObj, 'novoobj', name)
         this.connection.query(sql, function(err, result) {
             if (err) throw err;
-            var msg = ('update:' + name);
+            var msg = ('updated ' + result.affectedRows + ' users');
             return calback(msg);
         })
     }
