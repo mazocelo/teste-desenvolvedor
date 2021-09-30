@@ -1,6 +1,6 @@
 # Teste-Desenvolvedor
 
-Teste avaliativo para a vaga de desenolvedor na XP5
+Teste avaliativo para a vaga de desenolvedor na Voxcity
 
 
 ## Instalação
